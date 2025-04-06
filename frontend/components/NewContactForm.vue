@@ -25,6 +25,13 @@ import * as yup from 'yup';
 
 const emit = defineEmits(['form-values']);
 
+const props = defineProps({
+    contact: {
+        type: Object,
+        required: true,
+    },
+});
+
 const schema = yup.object({
     name: yup.string().required('Nome é obrigatório').min(3, 'Mínimo de 3 caracteres').matches(/^[a-zA-ZÀ-ÿ\s]*$/, 'Apenas letras são permitidas'),
     email: yup.string().required('Email é obrigatório').email('Digite um email válido'),
@@ -37,6 +44,7 @@ const schema = yup.object({
 
 const { handleSubmit, resetForm } = useForm({
     validationSchema: schema,
+    initialValues: props.contact,
 });
 
 const name = useField('name');
