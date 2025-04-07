@@ -1,7 +1,7 @@
 <template>
     <div>
         <PageHeader title="Contatos" />
-        <Card>
+        <Card class="mb-6">
             <ContactsActionsSection
                 @open-new-contact-modal="showNewContactModal = true"
                 @filter="searchContacts"

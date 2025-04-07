@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <table class="w-full">
             <thead class="font-medium text-[#505050] text-xs">
                 <tr>
@@ -58,9 +57,11 @@
                 </tr>
             </tbody>
         </table>
-        <div class="mt-12 py-[100px] flex justify-center items-center">
+        <div
+            v-if="internalItems.length === 0"
+            class="mt-12 py-[100px] flex justify-center items-center"
+        >
             <EmptyState
-                v-if="internalItems.length === 0"
                 title="Ainda não há contatos"
                 image="/images/empty-state.png"
                 action-text="Adicionar contato"
