@@ -9,13 +9,13 @@ class ContactFactory extends Factory
     public function definition(): array
     {
         return [
-            'address' => $this->faker->streetAddress,
+            'address' => $this->faker->optional()->streetAddress,
             'cellphone' => $this->faker->numerify('##########'),
             'email' => $this->faker->unique()->safeEmail,
             'name' => $this->faker->name,
             'neighborhood' => $this->faker->word,
             'phone' => $this->faker->numerify('##########'),
-            'state' => $this->faker->state,
+            'state' => $this->faker->optional()->state,
         ];
     }
 }
