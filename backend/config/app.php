@@ -123,4 +123,5 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'welcome_mail_delay' => (int) env('APP_WELCOME_MAIL_DELAY', 30),
 ];
