@@ -23,6 +23,13 @@
                         <EditIcon />
                     </div>
                     <div
+                        v-if="contact.phone"
+                        class="cursor-pointer w-[44px] flex items-center justify-center h-full"
+                        @click="emit('call', contact)"
+                    >
+                        <PhoneIcon />
+                    </div>
+                    <div
                         class="cursor-pointer w-[44px] flex items-center justify-center h-full"
                         @click="model = false"
                     >

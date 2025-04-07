@@ -16,6 +16,10 @@
             </template>
             <template #actions="{ item }">
                 <div class="flex gap-4">
+                    <PhoneIcon
+                        v-if="item.phone"
+                        @click.stop="emit('call', item)"
+                    />
                     <EditIcon @click.stop="emit('edit', item)" />
                     <DeleteIcon @click.stop="emit('delete', item)" />
                 </div>
@@ -24,7 +28,14 @@
 </template>
 
 <script setup>
-const emit = defineEmits(['open-new-contact-modal', 'item-click', 'edit', 'delete']);
+
+const emit = defineEmits([
+    'open-new-contact-modal',
+    'item-click',
+    'edit',
+    'delete',
+    'call'
+]);
 
 defineProps({
     items: {

@@ -7,16 +7,18 @@
                 :items="contacts"
                 @open-new-contact-modal="showNewContactModal = true"
                 @item-click="handleContactClick"
-                @edit="handleEditContact"
+                @call="handleCallContact"
                 @delete="handleDeleteContact"
+                @edit="handleEditContact"
             />
         </Card>
         <NewContactModal v-model="showNewContactModal" />
         <ContactInfoModal
             v-model="showContactInfoModal"
             :contact="selectedContact"
-            @edit="handleEditContact"
+            @call="handleCallContact"
             @delete="handleDeleteContact"
+            @edit="handleEditContact"
         />
         <AppConfirmModal
             v-model="showConfirmDeleteModal"
@@ -111,6 +113,10 @@ const handleDeleteContact = (contact) => {
 const deleteContact = () => {
     showConfirmDeleteModal.value = false;
     console.log('vou deletar de verdade!!');
+};
+
+const handleCallContact = (contact) => {
+    console.log('Ligando para o contato', contact);
 };
 
 </script>
