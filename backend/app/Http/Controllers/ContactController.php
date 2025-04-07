@@ -19,7 +19,9 @@ final class ContactController
 {
     public function index(): AnonymousResourceCollection
     {
-        return ContactResource::collection(Contact::query()->paginate(20));
+        return ContactResource::collection(
+            Contact::query()->filter(request('search'))->paginate(20)
+        );
     }
 
     public function store(ContactStoreRequest $request, StoreContactAction $action): JsonResponse

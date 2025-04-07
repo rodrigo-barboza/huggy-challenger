@@ -2,7 +2,10 @@
     <div>
         <PageHeader title="Contatos" />
         <Card>
-            <ContactsActionsSection @open-new-contact-modal="showNewContactModal = true"/>
+            <ContactsActionsSection
+                @open-new-contact-modal="showNewContactModal = true"
+                @filter="searchContacts"
+            />
             <ContactsTable
                 :items="contacts"
                 @open-new-contact-modal="showNewContactModal = true"
@@ -89,6 +92,15 @@ const deleteContact = async () => {
         await getContacts();
     } catch (error) {
         $toast.error('Erro ao excluir contato');
+    }
+};
+
+const searchContacts = async (filter) => {
+    try {
+        const { data } = await $axios.get(`/api/contacts?search=${filter}`);
+        contacts.value = data.data;
+    } catch (error) {
+        $toast.error('Erro ao buscar contatos');
     }
 };
 
