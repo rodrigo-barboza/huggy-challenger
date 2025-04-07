@@ -133,6 +133,13 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
         ],
+
+        'huggy-flow' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/huggy-flow.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 14,
+        ],
     ],
 
 ];
