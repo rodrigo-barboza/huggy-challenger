@@ -19,6 +19,8 @@
 
 <script setup>
 
+const emit = defineEmits(['edit']);
+
 const model = defineModel({
     type: Boolean,
     default: false,
@@ -37,7 +39,7 @@ const formRef = useTemplateRef('form');
 const handleSubmit = () => formRef.value.emitValues();
 
 const onSubmit = (values) => {
-    console.log('Dados do formulário:', values);
+    emit('edit', values);
     formRef.value.resetForm();
 };
 

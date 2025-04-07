@@ -12,7 +12,10 @@
                 @edit="handleEditContact"
             />
         </Card>
-        <NewContactModal v-model="showNewContactModal" />
+        <NewContactModal
+            v-model="showNewContactModal"
+            @create="createContact"
+        />
         <ContactInfoModal
             v-model="showContactInfoModal"
             :contact="selectedContact"
@@ -29,6 +32,7 @@
         <EditContactModal
             v-model="showEditContactModal"
             :contact="selectedContact"
+            @edit="editContact"
         />
     </div>
 </template>
@@ -36,67 +40,62 @@
 <script setup>
 definePageMeta({ layout: 'authenticated' });
 
-const contacts = ref([{
-        id: 1,
-        name: 'João Carlos',
-        email: 'joao.carlos@gmail.com',
-        phone: null,
-    },
-    {
-        id: 2,
-        name: 'Maria Fernanda',
-        email: 'maria.fernanda@gmail.com',
-        phone: '11987654321',
-    },
-    {
-        id: 3,
-        name: 'Pedro Henrique',
-        email: 'pedro.henrique@gmail.com',
-        phone: '11555555555',
-    },
-    {
-        id: 4,
-        name: 'Ana Beatriz',
-        email: 'ana.beatriz@gmail.com',
-        phone: '11555555555',
-    },
-    {
-        id: 5,
-        name: 'Felipe Augusto',
-        email: null,
-        phone: '11555555555',
-    },
-    {
-        id: 6,
-        name: 'Luiza Helena',
-        email: 'luiza.helena@gmail.com',
-        phone: '11555555555',
-    },
-    {
-        id: 7,
-        name: 'Guilherme Eduardo',
-        email: 'guilherme.eduardo@gmail.com',
-        phone: '11555555555',
-    },
-    {
-        id: 8,
-        name: 'Gabriel Francisco',
-        email: 'gabriel.francisco@gmail.com',
-        phone: '11555555555',
-    },
-    {
-        id: 9,
-        name: 'Thiago Rafael',
-        email: 'thiago.rafael@gmail.com',
-        phone: '11555555555',
-    },]);
+const { $axios, $toast } = useNuxtApp();
+
+const contacts = ref([]);
 const selectedContact = ref(null);
 const showNewContactModal = ref(false);
 const showContactInfoModal = ref(false);
 const showConfirmDeleteModal = ref(false);
 const showEditContactModal = ref(false);
 
-const handleContactClick  = (contact) => (selectedContact.value = contact, showContactInfoModal.value = true);
+const getContacts = async () => {
+    try {
+        const { data } = await $axios.get('/api/contacts');
+        contacts.value = data.data;
+    } catch (error) {
+        $toast.error('Erro ao carregar a lista de contatos');
+    }
+};
+
+const createContact = async (contact) => {
+    try {
+        const { data } = await $axios.post('/api/contacts', contact);
+        $toast.success(data.message);
+        showNewContactModal.value = false;
+        await getContacts();
+    } catch (error) {
+        $toast.error('Erro ao salvar contato');
+    }
+};
+
+const editContact = async (contact) => {
+    try {
+        const { data } = await $axios.put(`/api/contacts/${selectedContact.value.id}`, contact);
+        $toast.success(data.message);
+        showEditContactModal.value = false;
+        await getContacts();
+    } catch (error) {
+        $toast.error('Erro ao editar contato');
+    }
+};
+
+const deleteContact = async () => {
+    showConfirmDeleteModal.value = false;
+
+    try {
+        const { data } = await $axios.delete(`/api/contacts/${selectedContact.value.id}`);
+        $toast.success(data.message);
+        await getContacts();
+    } catch (error) {
+        $toast.error('Erro ao excluir contato');
+    }
+};
+
+const handleContactClick  = (contact) => {
+    selectedContact.value = contact;
+    showContactInfoModal.value = true;
+};
 
 const handleEditContact = (contact) => {
     selectedContact.value = contact;
@@ -110,13 +109,10 @@ const handleDeleteContact = (contact) => {
     showConfirmDeleteModal.value = true;
 };
 
-const deleteContact = () => {
-    showConfirmDeleteModal.value = false;
-    console.log('vou deletar de verdade!!');
-};
-
 const handleCallContact = (contact) => {
     console.log('Ligando para o contato', contact);
 };
+
+onMounted(() => getContacts());
 
 </script>
