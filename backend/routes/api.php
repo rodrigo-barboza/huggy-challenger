@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HuggyController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ Route::post('auth/login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('auth/register',[AuthController::class, 'register'])->name('auth.register');
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', fn () => auth()->user());
+    Route::apiResource('/contacts', ContactController::class);
     Route::post('auth/logout',[AuthController::class,'logout'])->name('auth.logout');
 });
 
