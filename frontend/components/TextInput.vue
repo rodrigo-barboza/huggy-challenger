@@ -9,7 +9,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none block w-full p-2.5"
             :class="{ 'border-red-500': field.errorMessage.value }"
             :placeholder="placeholder"
-            type="text"
+            :type="type"
         />
         <span
             v-if="field.errorMessage.value"
@@ -31,6 +31,11 @@ defineProps({
     label: {
         type: String,
         default: '',
+    },
+
+    type: {
+        type: String,
+        default: 'text',
     },
 
     field: {

@@ -1,5 +1,8 @@
 <template>
-    <button :class="`flex items-center font-medium gap-2 px-4 py-2 ${variants[props.color]} rounded-lg transition-colors duration-200`">
+    <button
+        :class="`flex items-center font-medium gap-2 px-4 py-2 ${variants[props.color]} rounded-lg transition-colors duration-200`"
+        :type="type"
+    >
         <slot />
     </button>
 </template>
@@ -11,6 +14,11 @@ const props = defineProps({
         type: String,
         default: 'default',
         validator: (value) => ['default', 'red', 'info'].includes(value),
+    },
+
+    type: {
+        type: String,
+        default: 'button',
     },
 });
 
