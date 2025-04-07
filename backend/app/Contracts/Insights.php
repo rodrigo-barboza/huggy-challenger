@@ -7,5 +7,7 @@ namespace App\Contracts;
 interface Insights
 {
     public function name(): string;
+
+    public function title(): string;
     public function execute(): array;
 }

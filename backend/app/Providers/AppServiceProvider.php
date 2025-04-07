@@ -17,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(InsightsRegistry::class, function ($app) {
             return new InsightsRegistry([
                 $app->make(\App\Insights\ContactsByStateInsights::class),
+                $app->make(\App\Insights\ContactsWithPhoneInsights::class),
             ]);
         });
     }

@@ -14,6 +14,11 @@ final class ContactsByStateInsights implements Insights
         return 'contacts-by-state';
     }
 
+    public function title(): string
+    {
+        return 'Segmentação por estado';
+    }
+
     public function execute(): array
     {
         return Contact::selectRaw('state, COUNT(*) as total')

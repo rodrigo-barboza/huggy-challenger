@@ -24,7 +24,7 @@ class Contact extends Model
     public function state(): Attribute
     {
         return Attribute::make(
-            set: fn (?string $value): ?string => $value ? Str::lower($value) : null,
+            set: fn (?string $value): ?string => $value ? Str::lower($value) : 'Não informado',
         );
     }
 
