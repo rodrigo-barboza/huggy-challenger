@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Actions\StoreContactAction;
+use App\Actions\UpdateContactAction;
 use App\Dtos\ContactDto;
 use App\Http\Requests\ContactStoreRequest;
+use App\Http\Requests\ContactUpdateRequest;
 use App\Http\Resources\ContactResource;
 use App\Models\Contact;
 use Illuminate\Http\JsonResponse;
@@ -29,14 +31,16 @@ final class ContactController
         ], JsonResponse::HTTP_CREATED);
     }
 
-    public function show(Contact $contact)
-    {
-        //
-    }
+    public function update(
+        ContactUpdateRequest $request,
+        Contact $contact,
+        UpdateContactAction $action,
+    ): JsonResponse {
+        $action->handle(new ContactDto(...$request->validated()), $contact);
 
-    public function update(Request $request, Contact $contact)
-    {
-        //
+        return response()->json([
+            'message' => 'Contato atualizado com sucesso',
+        ], JsonResponse::HTTP_OK);
     }
 
     public function destroy(Contact $contact)

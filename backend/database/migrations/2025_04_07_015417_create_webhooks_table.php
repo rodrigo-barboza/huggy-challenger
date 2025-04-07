@@ -18,16 +18,16 @@ return new class extends Migration
 
         DB::table('webhooks')->insert([
             [
-                'url' => 'https://huggy-challenger/api/webhooks/user-created',
-                'event' => 'user.created'
+                'url' => 'https://huggy-challenger/api/webhooks/contact-created',
+                'event' => 'contact.created'
             ],
             [
-                'url' => 'https://huggy-challenger/api/webhooks/user-updated',
-                'event' => 'user.updated'
+                'url' => 'https://huggy-challenger/api/webhooks/contact-updated',
+                'event' => 'contact.updated'
             ],
             [
-                'url' => 'https://huggy-challenger/api/webhooks/user-deleted',
-                'event' => 'user.deleted'
+                'url' => 'https://huggy-challenger/api/webhooks/contact-deleted',
+                'event' => 'contact.deleted'
             ],
         ]);
     }
