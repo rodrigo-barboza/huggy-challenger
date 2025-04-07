@@ -1,13 +1,18 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\HuggyController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::post('auth/login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('auth/register',[AuthController::class, 'register'])->name('auth.register');
 
-Route::middleware('auth:sanctum')->prefix('v1')->group(function () {
-    Route::get('teste', fn() => 'OK');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', fn () => auth()->user());
+    Route::post('auth/logout',[AuthController::class,'logout'])->name('auth.logout');
 });
 
+Route::get('/test', HuggyController::class);
+Route::get('/auth/huggy/login', [LoginController::class, 'login'])->name('auth.huggy.login');
