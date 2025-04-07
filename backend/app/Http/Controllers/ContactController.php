@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Actions\DeleteContactAction;
 use App\Actions\StoreContactAction;
 use App\Actions\UpdateContactAction;
 use App\Dtos\ContactDto;
@@ -12,7 +13,6 @@ use App\Http\Requests\ContactUpdateRequest;
 use App\Http\Resources\ContactResource;
 use App\Models\Contact;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 final class ContactController
@@ -43,8 +43,12 @@ final class ContactController
         ], JsonResponse::HTTP_OK);
     }
 
-    public function destroy(Contact $contact)
+    public function destroy(Contact $contact, DeleteContactAction $action): JsonResponse
     {
-        //
+        $action->handle($contact);
+
+        return response()->json([
+            'message' => 'Contato deletado com sucesso',
+        ], JsonResponse::HTTP_OK);
     }
 }
