@@ -14,7 +14,10 @@ class InsightsResource extends JsonResource
     {
         return collect($this->resource)
             ->mapWithKeys(fn (Insights $insight) => [
-                $insight->name() => $insight->execute(),
+                $insight->name() => [
+                    'title' => $insight->title(),
+                    'data' => $insight->execute()
+                ],
             ])
             ->toArray();
     }
