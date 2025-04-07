@@ -20,7 +20,10 @@ final class ContactController
     public function index(): AnonymousResourceCollection
     {
         return ContactResource::collection(
-            Contact::query()->filter(request('search'))->paginate(20)
+            Contact::query()
+                ->filter(request('search'))
+                ->orderBy('created_at', 'desc')
+                ->paginate(20)
         );
     }
 
