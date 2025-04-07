@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink to="/reports">
+    <NuxtLink to="/insights">
         <div class="w-[44px] flex items-center justify-center h-full">
             <ReportIcon />
         </div>
