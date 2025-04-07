@@ -3,12 +3,15 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactInsightsController;
+use App\Http\Controllers\GetLeadsFromHuggyFlowController;
 use App\Http\Controllers\HuggyController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('auth/login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('auth/register',[AuthController::class, 'register'])->name('auth.register');
+
+Route::post('/huggy-flow/leads', GetLeadsFromHuggyFlowController::class)->name('huggy.leads');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/contacts', ContactController::class)
