@@ -2,14 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contact;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class ContactsSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->call([
-            ContactsSeeder::class,
-        ]);
+        Contact::factory(50)->create();
     }
 }
