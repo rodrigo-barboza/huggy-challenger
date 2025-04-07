@@ -24,6 +24,8 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/tailwindcss',
 		'@vee-validate/nuxt',
+		'@pinia/nuxt',
+		'pinia-plugin-persistedstate/nuxt',
 	],
 	veeValidate: {
 		autoImports: true,
@@ -34,4 +36,5 @@ export default defineNuxtConfig({
 		}
 	},
 	css: ['@/assets/css/main.css'],
+	ssr: false,
 });
