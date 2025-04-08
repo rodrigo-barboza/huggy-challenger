@@ -49,7 +49,7 @@
                         <p class="text-xs leading-[16px] font-medium tracking-[0.4px]">{{ label }}</p>
                     </div>
                     <div class="col-span-9">
-                        <p class="text-sm font-normal tracking-[0.25px]">{{ value }}</p>
+                        <p class="text-sm font-normal tracking-[0.25px]">{{ value ?? '-' }}</p>
                     </div>
                 </template>
             </div>
