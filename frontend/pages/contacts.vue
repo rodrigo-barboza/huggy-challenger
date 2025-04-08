@@ -45,6 +45,8 @@ definePageMeta({ layout: 'authenticated' });
 
 const { $axios, $toast } = useNuxtApp();
 
+const { makeCall } = useTwilio();
+
 const contacts = ref([]);
 const selectedContact = ref(null);
 const showNewContactModal = ref(false);
@@ -121,9 +123,7 @@ const handleDeleteContact = (contact) => {
     showConfirmDeleteModal.value = true;
 };
 
-const handleCallContact = (contact) => {
-    console.log('Ligando para o contato', contact);
-};
+const handleCallContact = (contact) => makeCall(contact);
 
 onMounted(() => getContacts());
 
