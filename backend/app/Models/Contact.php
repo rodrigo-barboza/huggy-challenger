@@ -14,6 +14,13 @@ class Contact extends Model
 
     protected $guarded = [];
 
+    public function phone(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value): string => '+55' . preg_replace('/\D/', '', $value),
+        );
+    }
+
     public function name(): Attribute
     {
         return Attribute::make(
