@@ -13,9 +13,9 @@ class ContactStoreRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'max:255', 'unique:contacts'],
             'phone' => ['required', 'string', 'max:15'],
             'cellphone' => ['required', 'string', 'max:15'],
-            'address' => ['required', 'string', 'max:255'],
-            'neighborhood' => ['required', 'string', 'max:255'],
-            'state' => ['required', 'string', 'max:50'],
+            'address' => ['nullable', 'string', 'max:255'],
+            'neighborhood' => ['nullable', 'string', 'max:255'],
+            'state' => ['nullable', 'string', 'max:50'],
         ];
     }
 }
