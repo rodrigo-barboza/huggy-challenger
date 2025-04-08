@@ -7,10 +7,10 @@ namespace App\Dtos;
 final readonly class ContactDto
 {
     public function __construct(
-        public string $name = '',
-        public string $email = '',
-        public string $phone = '',
-        public string $cellphone = '',
+        public string $name,
+        public string $email,
+        public string $phone,
+        public string $cellphone,
         public ?string $address = null,
         public ?string $neighborhood = null,
         public ?string $state = null,
