@@ -40,4 +40,11 @@ return [
         'client_secret' => env('HUGGY_CLIENT_SECRET'),
         'redirect_url' => env('HUGGY_REDIRECT_URL'),
     ],
+
+    'twilio' => [
+        'account_sid' => env('TWILIO_SID'),
+        'auth_token' => env('TWILIO_AUTH_TOKEN'),
+        'phone_number' => env('TWILIO_PHONE_NUMBER'),
+        'call_timeout' => env('TWILIO_CALL_TIMEOUT', 20),
+    ],
 ];
