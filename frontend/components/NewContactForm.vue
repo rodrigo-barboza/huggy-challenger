@@ -35,8 +35,8 @@ const props = defineProps({
 const schema = yup.object({
     name: yup.string().required('Nome é obrigatório').min(3, 'Mínimo de 3 caracteres').matches(/^[a-zA-ZÀ-ÿ\s]*$/, 'Apenas letras são permitidas'),
     email: yup.string().required('Email é obrigatório').email('Digite um email válido'),
-    phone: yup.string().required('Telefone é obrigatório').min(10, 'Mínimo de 10 caracteres').matches(/^[0-9]+$/, 'Apenas números são permitidos'),
-    cellphone: yup.string().required('Celular é obrigatório').min(11, 'Mínimo de 11 caracteres').matches(/^[0-9]+$/, 'Apenas números são permitidos'),
+    phone: yup.string().required('Telefone é obrigatório').min(10, 'Mínimo de 10 caracteres'),
+    cellphone: yup.string().required('Celular é obrigatório').min(11, 'Mínimo de 11 caracteres'),
     address: yup.nullable,
     neighborhood: yup.nullable,
     state: yup.nullable,
