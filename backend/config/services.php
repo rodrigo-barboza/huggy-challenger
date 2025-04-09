@@ -45,6 +45,7 @@ return [
         'account_sid' => env('TWILIO_SID'),
         'auth_token' => env('TWILIO_AUTH_TOKEN'),
         'phone_number' => env('TWILIO_PHONE_NUMBER'),
+        'agent_number' => env('TWILIO_AGENT_PHONE_NUMBER'),
         'call_timeout' => env('TWILIO_CALL_TIMEOUT', 20),
     ],
 ];

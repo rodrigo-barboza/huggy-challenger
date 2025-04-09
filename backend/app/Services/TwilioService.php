@@ -35,7 +35,7 @@ class TwilioService
         );
 
         $response->dial(
-            config('services.twilio.phone_number'),
+            config('services.twilio.agent_number'),
             [
                 'action' => route('twilio.call.status'),
                 'method' => 'POST',
