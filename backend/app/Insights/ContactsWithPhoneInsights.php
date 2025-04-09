@@ -16,7 +16,7 @@ final class ContactsWithPhoneInsights implements Insights
 
     public function title(): string
     {
-        return 'Usuários com e sem telefone';
+        return 'Contatos com e sem telefone';
     }
 
     public function execute(): array
