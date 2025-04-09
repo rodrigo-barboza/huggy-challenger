@@ -80,6 +80,12 @@ Acesse a aplicação em: [http://localhost:3000](http://localhost:3000)
 ---
 
 ### 2. Cadastro de Novos Contatos
+Para testar essa funcionalidade, certifique-se de que a fila esteja em execução (a menos que o seu .env esteja configurado com QUEUE_CONNECTION=sync).
+Garanta também que as credenciais de um servidor SMTP estejam corretamente configuradas para os testes — recomendo o uso do Mailtrap.
+Além disso, ajuste a variável APP_WELCOME_MAIL_DELAY no arquivo .env do backend para 1, pois, caso contrário, o e-mail será enviado apenas após 30 minutos.
+
+Importante: os jobs responsáveis por disparar as requisições via webhook irão falhar, pois a URL cadastrada atualmente não existe. Caso queira testar em uma aplicação que exista, crie pelo tinker um registro utilizando o model Webhook com o evento de criação de contato.
+
 1. Clique no botão azul **"Adicionar Contato"**
 2. Preencha todos os campos obrigatórios no modal
 
