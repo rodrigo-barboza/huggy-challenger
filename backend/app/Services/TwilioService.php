@@ -8,7 +8,7 @@ use Twilio\Rest\Api\V2010\Account\CallInstance;
 use Twilio\Rest\Client;
 use Twilio\TwiML\VoiceResponse;
 
-final class TwilioService
+class TwilioService
 {
     public function __construct(private Client $twilio)
     {
