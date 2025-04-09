@@ -6,7 +6,7 @@
         >
             Sair
         </SecondaryButton>
-        <main class="w-[930px]">
+        <main class="w-full sm:w-[930px]">
             <slot></slot>
         </main>
     </div>

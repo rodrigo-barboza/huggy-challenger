@@ -1,5 +1,5 @@
 <template>
-    <div class="min-w-[250px] relative">
+    <div class="min-w-full sm:min-w-[250px] relative">
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <SearchIcon />
         </div>

@@ -1,15 +1,15 @@
 <template>
     <AppModal v-model="model">
         <template #header>
-            <div class="flex justify-between">
-                <div class="flex items-center gap-4">
+            <div class="flex flex-col items-center gap-4 sm:gap-0 sm:flex-row sm:justify-between">
+                <div class="flex items-center gap-4 order-2 sm:order-1">
                     <img
                         class="rounded-full"
                         :src="generateAvatar(contact.name)"
                     >
                     <span class="font-medium text-xl text-[#262626]">{{ contact.name }}</span>
                 </div>
-                <div class="flex gap-2">
+                <div class="flex gap-2 order-1 sm:order-2">
                     <div
                         class="cursor-pointer w-[44px] flex items-center justify-center h-full"
                         @click="emit('delete', contact)"

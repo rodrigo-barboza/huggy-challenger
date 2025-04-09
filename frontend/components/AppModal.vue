@@ -14,7 +14,7 @@
                 />
             </div>
             <hr class="w-full h-px bg-gray-200 border-0">
-            <div class="p-6">
+            <div class="p-6 max-h-[calc(100vh-210px)] overflow-y-auto">
                 <slot></slot>
             </div>
             <template v-if="hasSlots($slots, 'actions')">

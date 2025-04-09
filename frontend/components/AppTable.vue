@@ -1,17 +1,17 @@
 <template>
-    <div>
-        <table class="w-full">
+    <div class="overflow-x-auto">
+        <table class="w-full min-w-[600px]">
             <thead class="font-medium text-[#505050] text-xs">
                 <tr>
                     <th
                         v-for="({ name, label, sortable = false }, index) in fields"
-                        class="py-[13px] px-6"
+                        class="py-[13px] px-3 sm:px-6"
                         :class="{ 'cursor-pointer': sortable }"
                         :key="index"
                         @click="sortable && sortFields(name)"
                     >
                         <div class="flex justify-start items-center gap-1 leading-[16px] tracking-[0.4px]">
-                            <span>
+                            <span class="whitespace-nowrap">
                                 {{ label }}
                             </span>
                             <template v-if="sortable">
@@ -20,6 +20,7 @@
                             </template>
                         </div>
                     </th>
+                    <th class="w-[100px]"></th>
                 </tr>
             </thead>
             <tbody class="border-t border-[#E1E1E1] text-sm text-[#262626] font-normal">
@@ -33,7 +34,7 @@
                 >
                     <td
                         v-for="({ name }, index) in fields"
-                        class="h-[64px] px-6"
+                        class="h-[64px] px-3 sm:px-6"
                         :key="index"
                     >
                         <div class="flex items-center">
@@ -42,7 +43,7 @@
                                 :name="name"
                                 :item="item"
                             />
-                            <div v-else>
+                            <div v-else class="truncate max-w-[150px] sm:max-w-none">
                                 {{ item[name] ?? '-' }}
                             </div>
                         </div>

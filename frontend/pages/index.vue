@@ -4,7 +4,7 @@
             Login
         </div>
         <LoginForm
-            class="min-w-[400px]"
+            class="min-w-[330px] sm:min-w-[400px]"
             @submit="onLogin"
         />
         <PrimaryButton

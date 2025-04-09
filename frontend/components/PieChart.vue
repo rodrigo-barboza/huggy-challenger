@@ -44,17 +44,34 @@ const chartOptions = ref({
     legend: {
         position: 'right',
         orientation: 'vertical',
-        offsetX: -50,
-        offsetY: 120,
+        offsetX: -100,
+        offsetY: 0,
     },
     responsive: [{
         breakpoint: 680,
         options: {
             chart: {
-                width: 350
+                width: 550,
+                position: 'center',
             },
             legend: {
-                position: 'left'
+                show: false,
+                onItemHover: {
+                    highlightDataSeries: true
+                }
+            }
+        }
+    },
+    {
+        breakpoint: 480,
+        options: {
+            chart: {
+                width: 350,
+                position: 'center',
+            },
+            legend: {
+                position: 'bottom',
+                height: 150
             }
         }
     }],

@@ -1,21 +1,21 @@
 <template>
     <form class="space-y-4">
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <TextInput class="col-span-2" v-model="name.value.value" label="Name" placeholder="Nome completo" :field="name" />
             <TextInput class="col-span-2" v-model="email.value.value" label="Email" placeholder="Email" :field="email" />
         </div>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <TextInput v-model="phone.value.value" label="Telefone" placeholder="Telefone" :field="phone" />
         </div>
-        <div class="grid grid-cols-2  gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2  gap-4">
             <TextInput v-model="cellphone.value.value" label="Celular" placeholder="Celular" :field="cellphone" />
         </div>
-        <div class="grid grid-cols-6 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-6 gap-4">
             <TextInput class="col-span-5" v-model="address.value.value" label="Endereço" placeholder="Endereço" :field="address" />
         </div>
-        <div class="grid grid-cols-6 gap-4">
-            <TextInput class="col-span-3" v-model="neighborhood.value.value" label="Bairro" placeholder="Bairro" :field="neighborhood" />
-            <TextInput class="col-span-2" v-model="state.value.value" label="Estado" placeholder="Estado" :field="state" />
+        <div class="grid grid-cols-1 sm:grid-cols-6 gap-4">
+            <TextInput class="sm:col-span-3" v-model="neighborhood.value.value" label="Bairro" placeholder="Bairro" :field="neighborhood" />
+            <TextInput class="sm:col-span-2" v-model="state.value.value" label="Estado" placeholder="Estado" :field="state" />
         </div>
     </form>
 </template>

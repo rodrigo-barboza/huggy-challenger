@@ -1,5 +1,5 @@
 <template>
-    <div class="py-6 px-7 flex gap-2 items-center cursor-pointer w-fit" @click="backTo">
+    <div class="py-3 px-3 sm:py-6 sm:px-7 flex gap-2 items-center cursor-pointer w-fit" @click="backTo">
         <LeftArrowIcon />
         <span class="text-sm font-medium leading-[18px]">Voltar</span>
     </div>
