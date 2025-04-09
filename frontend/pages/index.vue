@@ -7,12 +7,6 @@
             class="min-w-[330px] sm:min-w-[400px]"
             @submit="onLogin"
         />
-        <PrimaryButton
-            class="self-center w-fit"
-            @click="handleHuggyLogin"
-        >
-            Fazer login com a Huggy
-        </PrimaryButton>
     </section>
 </template>
 
@@ -30,12 +24,6 @@ const onLogin = async (payload) => {
     } catch (error) {
         $toast.error('Credenciais inválidas');
     }
-};
-
-const handleHuggyLogin = async () => {
-  const { data } = await useApi('get', '/api/test');
-  
-  window.location.href = data;
 };
 
 </script>

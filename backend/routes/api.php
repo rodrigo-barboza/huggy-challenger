@@ -4,8 +4,6 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactInsightsController;
 use App\Http\Controllers\GetLeadsFromHuggyFlowController;
-use App\Http\Controllers\HuggyController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TwilioController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +21,3 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/twilio/make-call/{contact}', [TwilioController::class, 'makeCall'])->name('twilio.make.call');
     Route::post('/auth/logout',[AuthController::class,'logout'])->name('auth.logout');
 });
-
-Route::get('/test', HuggyController::class);
-Route::get('/auth/huggy/login', [LoginController::class, 'login'])->name('auth.huggy.login');
